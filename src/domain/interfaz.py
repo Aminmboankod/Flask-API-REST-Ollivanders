@@ -1,4 +1,5 @@
 class Updateable:
     
-    def updateQuality(self):
+    def update_quality(self):
+        # this method is empty because is a interface
         pass

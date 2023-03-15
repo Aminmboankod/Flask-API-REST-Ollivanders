@@ -24,4 +24,4 @@ if __name__=="__main__":
     inventory = GildedRose(itemList)
 
     for item in itemList:
-        inventory.updateInventory()
+        inventory.update_inventory()

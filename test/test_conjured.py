@@ -16,12 +16,12 @@ def test_conjured(store):
     over the days that are provided in the file report.txt
     '''
 
-    dayOne      =   Conjured("Conjured Mana Cake", 2, 4)
-    dayTwo      =   Conjured("Conjured Mana Cake", 1, 2)
-    dayThree    =   Conjured("Conjured Mana Cake", 0, 0)
-    dayFour     =   Conjured("Conjured Mana Cake", -1, 0)
-    dayFive     =   Conjured("Conjured Mana Cake", -2, 0)
-    daySix      =   Conjured("Conjured Mana Cake", -3, 0)
+    day_one      =   Conjured("Conjured Mana Cake", 2, 4)
+    day_two      =   Conjured("Conjured Mana Cake", 1, 2)
+    day_three    =   Conjured("Conjured Mana Cake", 0, 0)
+    day_four     =   Conjured("Conjured Mana Cake", -1, 0)
+    day_five     =   Conjured("Conjured Mana Cake", -2, 0)
+    day_six      =   Conjured("Conjured Mana Cake", -3, 0)
 
     '''
     we update once for each day it spends in the inventory 
@@ -29,24 +29,24 @@ def test_conjured(store):
     '''
     # update Day 1
     store.updateQuality()
-    assert repr(store) == repr(dayOne)
+    assert repr(store) == repr(day_one)
 
     # update Day 2
     store.updateQuality()
-    assert repr(store) == repr(dayTwo)
+    assert repr(store) == repr(day_two)
 
     # update Day 3
     store.updateQuality()
-    assert repr(store) == repr(dayThree)
+    assert repr(store) == repr(day_three)
 
     # update Day 4
     store.updateQuality()
-    assert repr(store) == repr(dayFour)
+    assert repr(store) == repr(day_four)
 
     # update Day 5
     store.updateQuality()
-    assert repr(store) == repr(dayFive)
+    assert repr(store) == repr(day_five)
 
     # update Day 6
     store.updateQuality()
-    assert repr(store) == repr(daySix)
+    assert repr(store) == repr(day_six)
