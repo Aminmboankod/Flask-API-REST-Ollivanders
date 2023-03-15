@@ -1,4 +1,4 @@
-from src.main import *
+from src.domain.items.agedBrie import AgedBrie
 import pytest
 
 

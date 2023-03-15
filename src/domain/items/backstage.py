@@ -1,4 +1,5 @@
-from src.domain.normalItem import *
+from src.domain.item import Item
+from src.domain.normalItem import NormalItem
 
 class Backstage(NormalItem):
 

@@ -1,5 +1,8 @@
-from src.domain.item import *
-from src.domain.interfaz import *
+
+
+from src.domain.item import Item
+from src.domain.interfaz import Updateable
+
 
 class NormalItem(Item, Updateable):
     def __init__(self,  name, sellIn, quality):
