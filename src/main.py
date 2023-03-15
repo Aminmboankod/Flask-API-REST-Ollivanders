@@ -1,11 +1,13 @@
-from src.domain.normalItem import *
-from src.domain.items.agedBrie import *
-from src.domain.items.backstage import *
-from src.domain.items.conjured import *
-from src.domain.items.sulfuras import *
-from src.domain.gildedRose import *
+from domain.normalItem       import NormalItem
+from domain.items.agedBrie   import AgedBrie
+from domain.items.backstage  import Backstage
+from domain.items.conjured   import Conjured
+from domain.items.sulfuras   import Sulfuras
+from domain.gildedRose       import GildedRose
 
 if __name__=="__main__":
+
+    
 
     itemList = [
                 NormalItem("+5 Dexterity Vest", 10, 20),
@@ -22,4 +24,4 @@ if __name__=="__main__":
     inventory = GildedRose(itemList)
 
     for item in itemList:
-        inventory.updateInventory()
+        inventory.update_inventory()

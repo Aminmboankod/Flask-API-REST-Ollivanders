@@ -1,12 +1,15 @@
-from src.domain.item import *
-from src.domain.interfaz import *
+
+
+from src.domain.item import Item
+from src.domain.interfaz import Updateable
+
 
 class NormalItem(Item, Updateable):
-    def __init__(self,  name, sellIn, quality):
-        Item.__init__(self, name, sellIn, quality)
+    def __init__(self,  name, sell_in, quality):
+        Item.__init__(self, name, sell_in, quality)
 
     def __repr__(self):
-        return "%s, %s, %s" % (self.name, self.sellIn, self.quality)
+        return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
     
     def getName(self):
         return self.name
@@ -15,10 +18,10 @@ class NormalItem(Item, Updateable):
         return self.quality
 
     def getSellIn(self):
-        return self.sellIn
+        return self.sell_in
 
     def setSellIn(self):
-        self.sellIn = self.sellIn + -1
+        self.sell_in = self.sell_in + -1
 
     def setQuality(self, value):
         if self.quality + value > 50:

@@ -1,4 +1,4 @@
-from src.main import *
+from src.domain.items.sulfuras import Sulfuras
 import pytest
 
 
@@ -16,45 +16,45 @@ def test_sulfuras(store):
     over the days that are provided in the file report.txt
     '''
 
-    dayOne      =   Sulfuras("Hand of Ragnaros", 0, 80)
-    dayTwo      =   Sulfuras("Hand of Ragnaros", 0, 80)
-    dayThree    =   Sulfuras("Hand of Ragnaros", 0, 80)
-    dayFour     =   Sulfuras("Hand of Ragnaros", 0, 80)
-    dayFive     =   Sulfuras("Hand of Ragnaros", 0, 80)
-    daySix      =   Sulfuras("Hand of Ragnaros", 0, 80)
+    day_one      =   Sulfuras("Hand of Ragnaros", 0, 80)
+    day_two      =   Sulfuras("Hand of Ragnaros", 0, 80)
+    day_three    =   Sulfuras("Hand of Ragnaros", 0, 80)
+    day_four     =   Sulfuras("Hand of Ragnaros", 0, 80)
+    day_five     =   Sulfuras("Hand of Ragnaros", 0, 80)
+    day_six      =   Sulfuras("Hand of Ragnaros", 0, 80)
 
     '''
     we update once for each day it spends in the inventory 
     and check that it matches the result of the report.txt
     '''
     # update Day 1
-    store.updateQuality()
-    assert repr(store) == repr(dayOne)
+    store.update_quality()
+    assert repr(store) == repr(day_one)
 
     # update Day 2
-    store.updateQuality()
-    assert repr(store) == repr(dayTwo)
+    store.update_quality()
+    assert repr(store) == repr(day_two)
 
     # update Day 3
-    store.updateQuality()
-    assert repr(store) == repr(dayThree)
+    store.update_quality()
+    assert repr(store) == repr(day_three)
 
     # update Day 4
-    store.updateQuality()
-    assert repr(store) == repr(dayFour)
+    store.update_quality()
+    assert repr(store) == repr(day_four)
 
     # update Day 5
-    store.updateQuality()
-    assert repr(store) == repr(dayFive)
+    store.update_quality()
+    assert repr(store) == repr(day_five)
 
     # update Day 6
-    store.updateQuality()
-    assert repr(store) == repr(daySix)
+    store.update_quality()
+    assert repr(store) == repr(day_six)
 
 
 
 @pytest.mark.sulfurasNegative
-def test_sulfurasNegative(store):
+def test_sulfuras_negative():
     
     #New store object with another properties
     store       =   Sulfuras("Hand of Ragnaros", -1, 80)
@@ -64,37 +64,37 @@ def test_sulfurasNegative(store):
     We reate variables with the different states of the Conjured object 
     over
     '''    
-    dayOne      =   Sulfuras("Hand of Ragnaros", -1, 80)
-    dayTwo      =   Sulfuras("Hand of Ragnaros", -1, 80)
-    dayThree    =   Sulfuras("Hand of Ragnaros", -1, 80)
-    dayFour     =   Sulfuras("Hand of Ragnaros", -1, 80)
-    dayFive     =   Sulfuras("Hand of Ragnaros", -1, 80)
-    daySix      =   Sulfuras("Hand of Ragnaros", -1, 80)
+    day_one      =   Sulfuras("Hand of Ragnaros", -1, 80)
+    day_two      =   Sulfuras("Hand of Ragnaros", -1, 80)
+    day_three    =   Sulfuras("Hand of Ragnaros", -1, 80)
+    day_four     =   Sulfuras("Hand of Ragnaros", -1, 80)
+    day_five     =   Sulfuras("Hand of Ragnaros", -1, 80)
+    day_six      =   Sulfuras("Hand of Ragnaros", -1, 80)
 
     '''
     we update once for each day it spends in the inventory 
     and check that it matches the result of the report.txt
     '''
     # update Day 1
-    store.updateQuality()
-    assert repr(store) == repr(dayOne)
+    store.update_quality()
+    assert repr(store) == repr(day_one)
 
     # update Day 2
-    store.updateQuality()
-    assert repr(store) == repr(dayTwo)
+    store.update_quality()
+    assert repr(store) == repr(day_two)
 
     # update Day 3
-    store.updateQuality()
-    assert repr(store) == repr(dayThree)
+    store.update_quality()
+    assert repr(store) == repr(day_three)
 
     # update Day 4
-    store.updateQuality()
-    assert repr(store) == repr(dayFour)
+    store.update_quality()
+    assert repr(store) == repr(day_four)
 
     # update Day 5
-    store.updateQuality()
-    assert repr(store) == repr(dayFive)
+    store.update_quality()
+    assert repr(store) == repr(day_five)
 
     # update Day 6
-    store.updateQuality()
-    assert repr(store) == repr(daySix)
+    store.update_quality()
+    assert repr(store) == repr(day_six)

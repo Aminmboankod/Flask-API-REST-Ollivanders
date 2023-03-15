@@ -1,4 +1,4 @@
-from src.main import *
+from src.domain.normalItem import NormalItem
 import pytest
 
 
@@ -9,19 +9,19 @@ def store():
     return item
 
 @pytest.mark.normalItem
-def test_normalItem(store):
+def test_normal_item(store):
 
     '''
     We reate variables with the different states of the normal object 
     over the days that are provided in the file report.txt
     '''
 
-    dayOne      =   NormalItem("+5 Dexterity Vest", 9, 18)
-    dayTwo      =   NormalItem("+5 Dexterity Vest", 8, 16)
-    dayThree    =   NormalItem("+5 Dexterity Vest", 7, 14)
-    dayFour     =   NormalItem("+5 Dexterity Vest", 6, 12)
-    dayFive     =   NormalItem("+5 Dexterity Vest", 5, 10)
-    daySix      =   NormalItem("+5 Dexterity Vest", 4, 8)
+    day_one      =   NormalItem("+5 Dexterity Vest", 9, 18)
+    day_two      =   NormalItem("+5 Dexterity Vest", 8, 16)
+    day_three    =   NormalItem("+5 Dexterity Vest", 7, 14)
+    day_four     =   NormalItem("+5 Dexterity Vest", 6, 12)
+    day_five     =   NormalItem("+5 Dexterity Vest", 5, 10)
+    day_six      =   NormalItem("+5 Dexterity Vest", 4, 8)
 
     '''
     we update once for each day it spends in the inventory 
@@ -29,25 +29,24 @@ def test_normalItem(store):
     '''
     # update Day 1
     store.updateQuality()
-    assert repr(store) == repr(dayOne)
+    assert repr(store) == repr(day_one)
 
     # update Day 2
     store.updateQuality()
-    assert repr(store) == repr(dayTwo)
+    assert repr(store) == repr(day_two)
 
     # update Day 3
     store.updateQuality()
-    assert repr(store) == repr(dayThree)
+    assert repr(store) == repr(day_three)
 
     # update Day 4
     store.updateQuality()
-    assert repr(store) == repr(dayFour)
+    assert repr(store) == repr(day_four)
 
     # update Day 5
     store.updateQuality()
-    assert repr(store) == repr(dayFive)
+    assert repr(store) == repr(day_five)
 
     # update Day 6
     store.updateQuality()
-    assert repr(store) == repr(daySix)
-
+    assert repr(store) == repr(day_six)

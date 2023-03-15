@@ -1,10 +1,10 @@
 class Item:
-    def __init__(self, name, sellIn, quality):
+    def __init__(self, name, sell_in, quality):
         self.name = name
         self.quality = quality 
-        self.sellIn = sellIn
+        self.sell_in = sell_in
     
     
     def __repr__(self):
-        return "%s, %s, %s" % (self.name, self.sellIn, self.quality)
+        return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
     
