@@ -7,8 +7,11 @@ from domain.gildedRose       import GildedRose
 
 if __name__=="__main__":
 
+    '''
+        The intention is to create a database that supplies 
+        the data stored in the "itemList" variable to do without it
+    '''
     
-
     itemList = [
                 NormalItem("+5 Dexterity Vest", 10, 20),
                 AgedBrie("Aged Brie", 2, 0),
