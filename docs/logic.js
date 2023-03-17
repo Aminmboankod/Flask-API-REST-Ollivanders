@@ -1,3 +1,8 @@
+///////////////////////////// CORS ////////////////////////////
+
+const miHeaders = new Headers();
+
+
 
 //////////////////////////// GET //////////////////////////////
 
@@ -5,9 +10,7 @@ const inventButton = document.querySelector('#inventario');
 inventButton.addEventListener("click", inventario);
 
 function inventario() {
-
-    var miHeaders = new Headers();
-
+    miHeaders.append('Origin', 'http://127.0.0.1:5501');
     var miInit = { method: 'GET',
                     headers: miHeaders,
                     mode: 'cors',
@@ -67,7 +70,7 @@ function addItem(e) {
 
 //////////////////////////// DELETE ////////////////////////////////////
 
-formulario.delete.addEventListener('click', deleteItemPromise);
+formulario.delete.addEventListener('click', deleteItem);
 
 function deleteItem() {
 
