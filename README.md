@@ -4,6 +4,38 @@
 
 En el siguiente repositorio se reutilizará el código del repositorio [Aminmboankod/Gilded-Rose-Kata](https://github.com/Aminmboankod/Gilded-Rose-Kata) (para más información [readme](./GILDEDROSEKATA.md)) para completar el proyecto de final del segundo trimestre de curso del grado superior `intensivo` de desarrollo de aplicaciones web que consiste en lo siguiente:
 
+
+
+- [Indice](#)
+- [Instalación](#instalación)
+
+
+
+
+# Instalación
+
+'''
+clone https://github.com/Aminmboankod/Flask-API-REST-Ollivanders
+'''
+
+Para arrancar el proyecto en un contenedor Docker:
+'''
+docker build -t ollivanders-api-image:latest .
+
+docker run -p 5000:5000 ollivanders-api-image:latest
+'''
+
+
+
+
+
+
+
+
+
+
+
+
 `"A continuación el enunciado del proyecto escrito por mi tutor:"` [@dfleta](https://github.com/dfleta/ollivanders_shop)
 
 # Ollivanders wands shop
