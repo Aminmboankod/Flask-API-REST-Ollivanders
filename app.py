@@ -1,5 +1,5 @@
 from flask import Flask
-from src.repository.apiDB import connection_database
+
 
 
 app = Flask(__name__)
@@ -7,11 +7,6 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
-
-
-@app.route('/inventario HTTP/1.1')
-def inventario():
-    return connection_database
 
 
 

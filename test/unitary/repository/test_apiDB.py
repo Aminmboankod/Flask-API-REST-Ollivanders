@@ -1,15 +1,13 @@
 from src.repository.apiDB import read_items, read_item
-
-import json
 import pytest
 
-@pytest.mark.connection_database
+@pytest.mark.connectionDB
 def test_conection_db():
 
     assert read_items() != None
     assert read_items().status_code == 200
     
-
+@pytest.mark.read
 def test_read_item():
 
     assert read_item("+5 Dexterity Vest") == [{"_id": "64124bcb1d1c607ae6239ddd", 
