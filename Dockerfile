@@ -9,4 +9,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD [ "python", "app.py" ]
+CMD ["python", "-m", "flask", "run", "-h", "0.0.0.0"]
