@@ -1,8 +1,9 @@
-from src.repository.apiDB import connection_database
+from src.repository.apiDB import read_items
 
 import pytest
 
 @pytest.mark.connectionDatabase
 def test_conection_db():
-    assert connection_database() != None
-    assert connection_database().status_code == 200 
+
+    assert read_items() != None
+    assert read_items().status_code == 200 
