@@ -7,23 +7,59 @@ En el siguiente repositorio se reutilizará el código del repositorio [Aminmboa
 
 
 - [Indice](#)
-- [Instalación](#instalación)
+   - [Instalación](#instalación)
+   - [Dependencias](#dependencias)
+      - [Tox](#tox)
 
 
 
 
 # Instalación
 
-'''
+```
 clone https://github.com/Aminmboankod/Flask-API-REST-Ollivanders
-'''
+```
+Crear archivo tar.gz que contiene el proyecto
+````
+python3 setup.py sdist
+````
 
 Para arrancar el proyecto en un contenedor Docker:
-'''
+````
 docker build -t ollivanders-api-image:latest .
 
 docker run -p 5000:5000 ollivanders-api-image:latest
-'''
+````
+
+
+# Dependencias
+````
+attrs==22.2.0
+certifi==2022.12.7
+charset-normalizer==3.1.0
+click==8.1.3
+coverage==7.2.1
+exceptiongroup==1.1.1
+Flask==2.2.3
+idna==3.4
+iniconfig==2.0.0
+itsdangerous==2.1.2
+Jinja2==3.1.2
+MarkupSafe==2.1.2
+packaging==23.0
+pluggy==1.0.0
+pytest==7.2.2
+requests==2.28.2
+tomli==2.0.1
+urllib3==1.26.15
+Werkzeug==2.2.3
+`````
+
+## Tox 
+
+Tox es una herramienta de automatización de tareas que se utiliza comúnmente en proyectos de Python para facilitar la ejecución de pruebas, comprobaciones de estilo y otras tareas relacionadas con el proyecto. 
+
+----
 
 
 
