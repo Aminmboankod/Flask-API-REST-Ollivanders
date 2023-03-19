@@ -1,11 +1,18 @@
+
+from pymongo import MongoClient
+from pymongo.errors import ConfigurationError
+from dotenv import dotenv_values
 import requests
 import json
+import os
 
+'''
+    Uso el método dotenv_values para cargar las variables de entorno del archivo .env
+'''
 
-
-
-
-
+config = dotenv_values()
+KEY = config['KEY']
+URI = config['URI']
 
 def get_headers():
     """
@@ -15,7 +22,7 @@ def get_headers():
     return {
         'Content-Type': 'application/json',
         'Access-Control-Request-Headers': '*',
-        'api-key': "eNChn3gB6rRCKR9fzSRJYsVnePizUSRxvgReuXOcrEl4lhUe5j3XkSkLEKcmXwMW",
+        'api-key': KEY,
     }
 
 
@@ -24,13 +31,13 @@ def get_headers():
 
 
 
-def read_items():
+def inventario():
     """
         Este método hace una petición POST a la base de datos sin filtro
         Return: Toda la información que contiene la base de datos en formato JSON dentro de una lista
     """
 
-    url = "https://eu-west-2.aws.data.mongodb-api.com/app/data-qcybd/endpoint/data/v1/action/find"
+    url = URI
     payload = json.dumps({
         "collection": "items",
         "database": "Ollivanders-shop",
@@ -48,14 +55,14 @@ def read_items():
 
 
 
-def read_item(item_name):
+def item(item_name):
     """
         Este método hace una petición POST a la base de datos buscando por
         Return: Las ocurrencias que coincidan con algún documento de la 
         la base de datos en formato JSON detro de una lista
     """
         
-    url = "https://eu-west-2.aws.data.mongodb-api.com/app/data-qcybd/endpoint/data/v1/action/find"
+    url = URI
     payload = json.dumps({
         "collection": "items",
         "database": "Ollivanders-shop",

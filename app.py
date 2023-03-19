@@ -1,14 +1,19 @@
-from flask import Flask
+from flask import Flask, jsonify
+
+from src.repository.apiDB import inventario
 
 
 
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def home():
+    return "Bienvenido a mi API"
 
-
+@app.route('/inventario')
+def get_items():
+    items = inventario()
+    return jsonify(items.json())
 
 if __name__=="__main__":
-    app.run(host='0.0.0.0')
+    app.run(debug=True)
