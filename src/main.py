@@ -5,6 +5,7 @@ from domain.items.conjured   import Conjured
 from domain.items.sulfuras   import Sulfuras
 from domain.gildedRose       import GildedRose
 
+
 if __name__=="__main__":
 
     '''
@@ -24,6 +25,7 @@ if __name__=="__main__":
                 Conjured("Conjured Mana Cake", 3, 6)
     ]
 
+   
     inventory = GildedRose(itemList)
 
     for item in itemList:
