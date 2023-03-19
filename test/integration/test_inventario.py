@@ -1,13 +1,13 @@
 from app import app
-from flask import jsonify
+
 
 import pytest
 
-
+# Creo un cliente de prueba mediante el uso del método test_client()
 @pytest.fixture
 def client():
     with app.test_client() as client:
-        yield client
+        yield client # Almaceno client en caché
 
 @pytest.mark.home
 def test_home(client):
