@@ -10,7 +10,7 @@ const inventButton = document.querySelector('#inventario');
 inventButton.addEventListener("click", inventario);
 
 function inventario() {
-    fetch('http://localhost:5000/inventario')
+    fetch('http://http://127.0.0.1/:5000/inventario')
         .then((response) => {
             if(response.ok) {
                 console.log("Response Status:", response.status);

@@ -19,4 +19,4 @@ def test_home(client):
 def test_get_items(client):
     response = client.get('/inventario')
     assert response.status_code == 200
-    assert isinstance(response.json, dict)
+    assert isinstance(response.json, list)

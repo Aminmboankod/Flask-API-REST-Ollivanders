@@ -1,6 +1,4 @@
 
-from pymongo import MongoClient
-from pymongo.errors import ConfigurationError
 from dotenv import dotenv_values
 import requests
 import json
@@ -28,9 +26,6 @@ def get_headers():
 
 ######################## C R U D #########################
 
-
-
-
 def inventario():
     """
         Este método hace una petición POST a la base de datos sin filtro
@@ -47,12 +42,6 @@ def inventario():
 
     response = requests.request("POST", url, headers=get_headers(), data=payload)
     return response
-
-
-
-
-
-
 
 
 def item(item_name):
