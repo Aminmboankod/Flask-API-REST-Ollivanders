@@ -105,7 +105,9 @@ def update_db(item):
     })
 
     try:
-        response = requests.put(url, headers=get_headers(), data=payload)
+        response = requests.request("POST", url, headers=get_headers(), data=payload)
+        
+    
         response.raise_for_status()
         print(f"PUT request to {url} with payload {payload} was successful with response {response.text}")
     except requests.exceptions.HTTPError as e:
