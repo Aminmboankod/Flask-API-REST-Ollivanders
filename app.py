@@ -1,4 +1,4 @@
-import json
+
 from flask import Flask, jsonify
 
 from src.repository.apiDB import inventory, item_db
@@ -22,6 +22,12 @@ def update():
     inventory_to_object(items)
     return "-----------Inventario actualizado------------\n"
 
+@app.route('/actualizar/<name>')
+def update_one(name):
+    new_string = name.replace("+", " ")
+    item = item_db(new_string)
+    inventory_to_object(item)
+    return f"----------{new_string} ha sido actualizado-----------\n"
 
 @app.route('/filter/<name>')
 def filter(name):
