@@ -8,8 +8,12 @@ En el siguiente repositorio se reutilizará el código del repositorio [Aminmboa
 
 - [Indice](#)
    - [Instalación](#instalación)
+   - [Uso](#uso)
    - [Dependencias](#dependencias)
+      - [Pytest]()
+      - [Coverage]()
       - [Tox](#tox)
+      - [Docker]()
 
 
 
@@ -31,6 +35,25 @@ docker build -t ollivanders-api-image:latest .
 docker run -p 5000:5000 ollivanders-api-image:latest
 ````
 
+
+# Uso 
+Para acceder a los distintos endpoints de esta API utilizando curl, puedes utilizar los siguientes comandos:
+
+Obtener la lista de ítems del inventario:
+```
+curl http://127.0.0.1:5000/inventario
+```
+
+Actualizar un ítem del inventario (debes especificar el nombre del ítem en el body de la petición):
+```
+curl -X POST -H "Content-Type: application/json" -d '{"name":"nombre_del_item"}' http://127.0.0.1:5000/actualizar
+```
+
+Actualizar un ítem del inventario mediante el formulario (debes especificar el nombre, sell_in y quality del ítem en el body de la petición):
+```
+curl -X POST -F "name=nombre_del_item" -F "sell_in=valor_sell_in" -F "quality=valor_quality" http://127.0.0.1:5000/update-item
+```
+Recuerda reemplazar "nombre_del_item", "valor_sell_in" y "valor_quality" con los valores correspondientes.
 
 # Dependencias
 ````
@@ -55,22 +78,11 @@ urllib3==1.26.15
 Werkzeug==2.2.3
 `````
 
-## Tox 
+# Tox 
 
 Tox es una herramienta de automatización de tareas que se utiliza comúnmente en proyectos de Python para facilitar la ejecución de pruebas, comprobaciones de estilo y otras tareas relacionadas con el proyecto. 
 
-----
-
-
-
-
-
-
-
-
-
-
-
+-------------------------------------------------------------------------
 
 `"A continuación el enunciado del proyecto escrito por mi tutor:"` [@dfleta](https://github.com/dfleta/ollivanders_shop)
 
