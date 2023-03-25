@@ -3,13 +3,14 @@ from src.domain.items.sulfuras import Sulfuras
 from src.domain.items.agedBrie import AgedBrie
 from src.domain.items.backstage import Backstage
 from src.domain.items.conjured import Conjured
-from src.repository.apiDB import update_db
+from src.repository.apiDB import delete_one, insert
 
 
 def inventory_to_object(inventary):
-
+    
     for item in inventary:
         post = update_item(item)
+        delete_one(item)
         object_to_inventory(post)
 
 # función para actualizar el inventario
@@ -19,11 +20,11 @@ def update_item(object):
 
     if object["name"] == "Aged Brie":
         item = AgedBrie(object["name"], object["sell_in"], object["quality"])
-    
+
 
     elif object["name"] == "Backstage passes to a TAFKAL80ETC concert":
         item = Backstage(object["name"], object["sell_in"], object["quality"])
-    
+
 
     elif object["name"] == "Conjured Mana Cake":
         item = Conjured(object["name"], object["sell_in"], object["quality"])
@@ -35,7 +36,8 @@ def update_item(object):
 
     else:
         item = NormalItem(object["name"], object["sell_in"], object["quality"])
-    
+        
+        
     item.update_quality()
 
     item_inventory = { 'name': item.getName(), 'sell_in': item.getSellIn(), 'quality': item.getQuality() }
@@ -43,4 +45,4 @@ def update_item(object):
 
 
 def object_to_inventory(item):
-    update_db(item)
+    insert(item)

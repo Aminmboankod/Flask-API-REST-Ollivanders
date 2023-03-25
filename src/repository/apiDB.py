@@ -1,21 +1,14 @@
 
-from src.domain.normalItem import NormalItem
-from src.domain.items.sulfuras import Sulfuras
-from src.domain.items.agedBrie import AgedBrie
-from src.domain.items.backstage import Backstage
-from src.domain.items.conjured import Conjured
 import requests
 import json
 import os
 
-'''
-    Uso el método dotenv_values para cargar las variables de entorno del archivo .env
-'''
-
-#load_dotenv()
 KEY = os.environ['KEY']
 FIND = os.environ['FIND']
 UPDATEONE = os.environ['UPDATEONE']
+DELETE = os.environ['DELETE']
+INSERT = os.environ['INSERT']
+
 
 def get_headers():
     """
@@ -29,7 +22,6 @@ def get_headers():
     }
 
 
-######################## C R U D #########################
 
 def inventory():
     """
@@ -43,6 +35,7 @@ def inventory():
         "database": "Ollivanders-shop",
         "dataSource": "OllivandersCluster",
         "filter": {},
+        "projection": {"_id": 0}
     })
 
     response = requests.request("POST", url, headers=get_headers(), data=payload)
@@ -89,7 +82,7 @@ def item_db(item_name):
 
 def update_db(item):
     """
-        Este método hace una petición PUT a la base de datos para actualizar el item.
+        Este método hace una petición POST a la base de datos para actualizar el item.
     """
 
     url = UPDATEONE
@@ -114,4 +107,53 @@ def update_db(item):
         print(f"PUT request to {url} with payload {payload} failed with error {e}")
     except Exception as e:
         print(f"PUT request to {url} with payload {payload} failed with error {e}")
+
+def delete():
+
+
+    url = DELETE
+    payload = json.dumps({
+        "collection": "inventory",
+        "database": "Ollivanders-shop",
+        "dataSource": "OllivandersCluster",
+        "filter": {}
+    })
+
+    requests.request("POST", url, headers=get_headers(), data=payload)
+
+def delete_one(item):
+    url = DELETE
+    payload = json.dumps({
+        "collection": "inventory",
+        "database": "Ollivanders-shop",
+        "dataSource": "OllivandersCluster",
+        "filter": {
+                "name": item["name"],
+                "sell_in": item["sell_in"],
+                "quality": item["quality"]
+        }
+    })
+
+    requests.request("POST", url, headers=get_headers(), data=payload)
+
+
+def insert(item):
+
+    url = INSERT
+    payload = json.dumps({
+        "collection": "inventory",
+        "database": "Ollivanders-shop",
+        "dataSource": "OllivandersCluster",
+        "document": {
+                "name": item["name"],
+                "sell_in": item["sell_in"],
+                "quality": item["quality"]
+        
+        }
+
+
+    })
+
+    requests.request("POST", url, headers=get_headers(), data=payload)
+
 

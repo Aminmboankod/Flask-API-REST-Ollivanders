@@ -1,9 +1,10 @@
 
 from flask import Flask, jsonify
 
-from src.repository.apiDB import inventory, item_db
-from src.repository.updateDB import inventory_to_object
 
+from src.repository.apiDB import delete, insert, inventory, item_db
+from src.repository.updateDB import inventory_to_object
+from src.services.services import Service
 
 app = Flask(__name__)
 
@@ -20,21 +21,27 @@ def get_items():
 def update():
     items = inventory()
     inventory_to_object(items)
-    return "-----------Inventario actualizado------------\n"
+    return "\n\n-----------Inventario actualizado------------\n\n"
 
 @app.route('/actualizar/<name>')
 def update_one(name):
     new_string = name.replace("+", " ")
     item = item_db(new_string)
     inventory_to_object(item)
-    return f"----------{new_string} ha sido actualizado-----------\n"
+    return f"\n\n----------{new_string} ha sido actualizado-----------\n\n"
 
 @app.route('/filter/<name>')
 def filter(name):
     new_string = name.replace("+", " ")
     return item_db(new_string)
 
-
+@app.route('/reiniciar')
+def reset():
+    delete()
+    for object in Service.item_list:
+        item = { 'name': object.getName(), 'sell_in': object.getSellIn(), 'quality': object.getQuality() }
+        insert(item)
+    return "\n\n-------------Reinicio exitoso----------\n\n"
 
 if __name__=="__main__":
     app.run(debug=True)

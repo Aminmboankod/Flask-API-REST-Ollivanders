@@ -29,7 +29,7 @@ class NormalItem(Item, Updateable):
         elif self.quality + value >= 0:
             self.quality = self.quality + value
 
-    def updateQuality(self):
+    def update_quality(self):
         if self.getSellIn() > 0:
             self.setQuality(-2)
         else:
