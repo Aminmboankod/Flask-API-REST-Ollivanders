@@ -1,5 +1,9 @@
 
-#from dotenv import load_dotenv
+from src.domain.normalItem import NormalItem
+from src.domain.items.sulfuras import Sulfuras
+from src.domain.items.agedBrie import AgedBrie
+from src.domain.items.backstage import Backstage
+from src.domain.items.conjured import Conjured
 import requests
 import json
 import os
@@ -35,14 +39,16 @@ def inventory():
 
     url = FIND
     payload = json.dumps({
-        "collection": "items",
+        "collection": "inventory",
         "database": "Ollivanders-shop",
         "dataSource": "OllivandersCluster",
         "filter": {},
     })
 
     response = requests.request("POST", url, headers=get_headers(), data=payload)
-    return response
+    response = json.loads(response.text)
+    items = response.get('documents')
+    return items
 
 
 def item_db(item_name):
@@ -54,7 +60,7 @@ def item_db(item_name):
         
     url = FIND
     payload = json.dumps({
-        "collection": "items",
+        "collection": "inventory",
         "database": "Ollivanders-shop",
         "dataSource": "OllivandersCluster",
         "filter": {"name": item_name},
@@ -82,25 +88,28 @@ def item_db(item_name):
     return item
 
 def update_db(item):
-
-    item_name = item["name"]
-    sell_in = item["sell_in"]
-    quality = item["quality"]
-
     """
         Este método hace una petición PUT a la base de datos para actualizar el item.
     """
+
     url = UPDATEONE
     payload = json.dumps({
-        "collection": "items",
+        "collection": "inventory",
         "database": "Ollivanders-shop",
         "dataSource": "OllivandersCluster",
-        "filter": {"name": item_name},
-        "update": {"$set": {"sell_in": sell_in, 
-                            "quality": quality}}
+        "filter": {"name": item["name"]},
+        "update": {"$set": {"sell_in": item["sell_in"],
+                            "quality": item["quality"]
+                            }
+                    }
     })
 
-    response = requests.request("PUT", url, headers=get_headers(), data=payload)
-
-    return response
+    try:
+        response = requests.put(url, headers=get_headers(), data=payload)
+        response.raise_for_status()
+        print(f"PUT request to {url} with payload {payload} was successful with response {response.text}")
+    except requests.exceptions.HTTPError as e:
+        print(f"PUT request to {url} with payload {payload} failed with error {e}")
+    except Exception as e:
+        print(f"PUT request to {url} with payload {payload} failed with error {e}")
 

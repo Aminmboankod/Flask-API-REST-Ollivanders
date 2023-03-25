@@ -1,7 +1,7 @@
 import json
 from flask import Flask, jsonify
 
-from src.repository.apiDB import inventory
+from src.repository.apiDB import inventory, item_db
 from src.repository.updateDB import inventory_to_object
 
 
@@ -13,16 +13,20 @@ def home():
 
 @app.route('/inventario')
 def get_items():
-    response = inventory()
-    response = json.loads(response.text)
-    items = response.get('documents')
+    items = inventory()
     return jsonify(items)
 
-@app.route('/update')
+@app.route('/actualizar')
 def update():
-    inventory_to_object(get_items())
-    get_items()
+    items = inventory()
+    inventory_to_object(items)
+    return "-----------Inventario actualizado------------\n"
 
+
+@app.route('/filter/<name>')
+def filter(name):
+    new_string = name.replace("+", " ")
+    return item_db(new_string)
 
 if __name__=="__main__":
     app.run(debug=True)
