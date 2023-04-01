@@ -1,9 +1,7 @@
-from distutils.core import setup
-import setuptools
-from setuptools import find_packages
+from setuptools import find_packages, setup
 
 
-packages = find_packages()
+package_data = {"": ["README.md"]}
 
 setup(
     name="Flask-API-REST-Ollivanders",
@@ -12,9 +10,8 @@ setup(
     author="Aminmboankod",
     author_email="amustafaboankod@cifpfbmoll.eu",
     url="https://github.com/Aminmboankod/Flask-API-REST-Ollivanders",
-    packages=packages,
-)
-setuptools.setup(
+    packages=find_packages(),
+    package_data=package_data,
     install_requires = [
             'attrs==22.2.0',
             'certifi==2022.12.7',
@@ -35,7 +32,9 @@ setuptools.setup(
             'tomli==2.0.1',
             'urllib3==1.26.15',
             'Werkzeug==2.2.3',
-    ]
+    ],
+    entry_points={"console_scripts": ["my-App = app:run"]},
+    
 )
 
 
