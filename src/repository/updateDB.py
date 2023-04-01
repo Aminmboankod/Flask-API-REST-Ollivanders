@@ -43,6 +43,5 @@ def update_item(object):
     item_inventory = { 'name': item.getName(), 'sell_in': item.getSellIn(), 'quality': item.getQuality() }
     return item_inventory
 
-
 def object_to_inventory(item):
     insert(item)

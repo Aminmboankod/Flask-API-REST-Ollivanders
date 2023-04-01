@@ -15,7 +15,8 @@ En el siguiente repositorio se reutilizará el código del repositorio [Aminmboa
       - [Tox](#tox)
       - [Docker]()
 
-
+<br>
+<br>
 
 
 # Instalación
@@ -26,15 +27,37 @@ clone https://github.com/Aminmboankod/Flask-API-REST-Ollivanders
 Crear archivo tar.gz que contiene el proyecto
 ````
 python3 setup.py sdist
+pip3 install -r requirements.txt
 ````
 
 Para arrancar el proyecto en un contenedor Docker:
 ````
-docker build -t ollivanders-api-image:latest .
+sudo docker build -t ollivanders-api-image .
 
-docker run -p 5000:5000 ollivanders-api-image:latest
+docker run -p 5000:5000 ollivanders-api-image
 ````
 
+Ten en cuenta que la aplicación se despliega en un contenedor Docker, por ello es importante que tengas en cuenta que en el dockerfile se importan 5 variables de entorno:
+````
+ENV FIND=$FIND
+ENV UPDATEONE=$UPDATEONE
+ENV KEY=$KEY
+ENV DELETE=$DELETE
+ENV INSERT=$INSERT
+````
+Estas variables se deben de haber creado en el entorno virtual en el que quieras ejecutar la aplicación. 
+
+Si ejecutas la aplicación flask en el equipo local y te notifica que no se puede ejecutar porque otro programa está en ejecución en el mismo puerto puedes ejecutar el siguiente comando:
+````
+sudo lsof -i :5000
+kill <pid en ejecución>
+````
+O puedes ejecutar flask en otro puerto usando el siguiente comando:
+````
+flask run --port <número_de_puerto>
+````
+<br>
+<br>
 
 # Uso 
 Para acceder a los distintos endpoints de esta API utilizando curl, puedes utilizar los siguientes comandos:
@@ -44,45 +67,38 @@ Obtener la lista de ítems del inventario:
 curl http://127.0.0.1:5000/inventario
 ```
 
-Actualizar un ítem del inventario (debes especificar el nombre del ítem en el body de la petición):
+Actualizar todos los items del inventario:
 ```
-curl -X POST -H "Content-Type: application/json" -d '{"name":"nombre_del_item"}' http://127.0.0.1:5000/actualizar
+curl http://127.0.0.1:5000/actualizar
 ```
 
-Actualizar un ítem del inventario mediante el formulario (debes especificar el nombre, sell_in y quality del ítem en el body de la petición):
+Actualizar un ítem:
 ```
-curl -X POST -F "name=nombre_del_item" -F "sell_in=valor_sell_in" -F "quality=valor_quality" http://127.0.0.1:5000/update-item
+curl http://127.0.0.1:5000/actualizar/<name>
 ```
-Recuerda reemplazar "nombre_del_item", "valor_sell_in" y "valor_quality" con los valores correspondientes.
 
-# Dependencias
-````
-attrs==22.2.0
-certifi==2022.12.7
-charset-normalizer==3.1.0
-click==8.1.3
-coverage==7.2.1
-exceptiongroup==1.1.1
-Flask==2.2.3
-idna==3.4
-iniconfig==2.0.0
-itsdangerous==2.1.2
-Jinja2==3.1.2
-MarkupSafe==2.1.2
-packaging==23.0
-pluggy==1.0.0
-pytest==7.2.2
-requests==2.28.2
-tomli==2.0.1
-urllib3==1.26.15
-Werkzeug==2.2.3
-`````
+Buscar un ítem por su nombre:
+```
+curl http://127.0.0.1:5000/filter/<name>
+```
+
+Reiniciar inventario:
+```
+curl http://127.0.0.1:5000/reiniciar
+```
+
+<br>
+<br>
+
 
 # Tox 
 
 Tox es una herramienta de automatización de tareas que se utiliza comúnmente en proyectos de Python para facilitar la ejecución de pruebas, comprobaciones de estilo y otras tareas relacionadas con el proyecto. 
 
 -------------------------------------------------------------------------
+<br>
+<br>
+<br>
 
 `"A continuación el enunciado del proyecto escrito por mi tutor:"` [@dfleta](https://github.com/dfleta/ollivanders_shop)
 

@@ -28,25 +28,25 @@ def test_conjured(store):
     and check that it matches the result of the report.txt
     '''
     # update Day 1
-    store.updateQuality()
+    store.update_quality()
     assert repr(store) == repr(day_one)
 
     # update Day 2
-    store.updateQuality()
+    store.update_quality()
     assert repr(store) == repr(day_two)
 
     # update Day 3
-    store.updateQuality()
+    store.update_quality()
     assert repr(store) == repr(day_three)
 
     # update Day 4
-    store.updateQuality()
+    store.update_quality()
     assert repr(store) == repr(day_four)
 
     # update Day 5
-    store.updateQuality()
+    store.update_quality()
     assert repr(store) == repr(day_five)
 
     # update Day 6
-    store.updateQuality()
+    store.update_quality()
     assert repr(store) == repr(day_six)

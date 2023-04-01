@@ -21,8 +21,6 @@ def get_headers():
         'api-key': KEY,
     }
 
-
-
 def inventory():
     """
         Este método hace una petición POST a la base de datos sin filtro
@@ -43,6 +41,11 @@ def inventory():
     items = response.get('documents')
     return items
 
+
+
+'''
+    Métodos para el crud a la base de datos
+'''
 
 def item_db(item_name):
     """
@@ -135,7 +138,6 @@ def delete_one(item):
     })
 
     requests.request("POST", url, headers=get_headers(), data=payload)
-
 
 def insert(item):
 
